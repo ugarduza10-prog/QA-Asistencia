@@ -1,9 +1,13 @@
-import styled  from "styled-components";
+import styled from "styled-components";
+import { Welcome } from "../../index";
+import { LandingPagesWelcome } from "../organismos/LandingPages/LandingPagesWelcome";
+
 export function HomeTemplate() {
-    return (<Container>
-        <span>Home Componente</span>
-        </Container>);
+
+  return (
+     <LandingPagesWelcome/>
+  );
 }
-const Container =styled.div`
-    height: 100vh;
-`
+const Container = styled.div`
+  height: 100vh;
+`;

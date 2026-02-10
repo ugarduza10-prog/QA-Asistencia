@@ -1,17 +1,49 @@
 import styled from "styled-components";
 import { useThemeStore } from "../../store/ThemeStore";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useUsuariosStore } from "../../store/UsuariosStore";
+import { Dark, Light } from "../../styles/themes";
 export function ToggleTema() {
-  const { setTheme } = useThemeStore();
+  const { editarThemeUser, datausuarios } = useUsuariosStore();
+  const { setTheme, theme } = useThemeStore();
+  const queryClient = useQueryClient();
+  const editarTemaUser = async () => {
+    const themeUse = theme === "light" ? "dark" : "light";
+    const themeStyle = datausuarios?.tema === "light" ? Dark : Light;
+    setTheme({
+      tema: themeUse,
+      style: themeStyle,
+    });
+    const p = {
+      id: datausuarios?.id,
+      tema: themeUse,
+    };
+
+    await editarThemeUser(p);
+  };
+  const { mutate,isPending } = useMutation({
+    mutationKey: ["editar tema"],
+    mutationFn: editarTemaUser,
+    onError: (error) => {
+      console.log(`Error: ${error.message}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["mostrar usuarios"]);
+    },
+  });
 
   return (
     <Container>
       <div className="container">
+        {
+          isPending && <span>espera...</span>
+        }
         <label className="toggle">
           <input
             id="switch"
             className="input"
             type="checkbox"
-            onClick={setTheme}
+            onClick={mutate}
           />
           <div className="icon icon--moon">
             <svg
@@ -119,8 +151,8 @@ export function ToggleTema() {
   );
 }
 const Container = styled.div`
-justify-content:center;
-display:flex;
+  justify-content: center;
+  display: flex;
   .toggle {
     width: 46px;
     height: 46px;
@@ -128,11 +160,10 @@ display:flex;
     display: grid;
     place-items: center;
     cursor: pointer;
-   
+
     line-height: 1;
-   
+
     margin-top: 15px;
-  
   }
 
   .input {

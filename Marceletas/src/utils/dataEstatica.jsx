@@ -32,20 +32,25 @@ export const LinksArray = [
     to: "/",
   },
   {
+    label: "Dashboard",
+    icon: "fluent-emoji-flat:antenna-bars",
+    to: "/dashboard",
+  },
+  {
     label: "VENDER",
     icon: "flat-color-icons:shop",
     to: "/pos",
   },
   {
-    label: "Kardex",
+    label: "Inventario",
     icon: "flat-ui:box",
-    to: "/kardex",
+    to: "/inventario",
   },
-  {
-    label: "Reportes",
-    icon: "flat-ui:graph",
-    to: "/reportes",
-  },
+  // {
+  //   label: "Reportes",
+  //   icon: "flat-ui:graph",
+  //   to: "/reportes",
+  // },
  
 ];
 export const SecondarylinksArray = [
@@ -53,7 +58,13 @@ export const SecondarylinksArray = [
   {
     label: "Configuración",
     icon:"icon-park:setting-two",
-    to: "/configurar",
+    to: "/configuracion",
+    color:"#CE82FF"
+  },
+  {
+    label: "Mi perfil",
+    icon:"icon-park:avatar",
+    to: "/miperfil",
     color:"#CE82FF"
   },
   
@@ -102,7 +113,7 @@ export const DataModulosConfiguracion =[
     title:"Categoria de productos",
     subtitle:"asigna categorias a tus productos",
     icono:"https://i.ibb.co/VYbMRLZ/categoria.png",
-    link:"/configurar/categorias",
+    link:"/configuracion/categorias",
     
   },
   {
@@ -112,6 +123,7 @@ export const DataModulosConfiguracion =[
     link:"/configurar/marca",
    
   },
+  
 
 ]
 //tipo usuario

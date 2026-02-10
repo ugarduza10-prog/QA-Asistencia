@@ -8,7 +8,7 @@ export function Footer() {
         <span>
           Esta es una página segura de TheOrigins. Si tienes dudas sobre la
           autenticidad de la web, comunícate con
-          <br /> nosotros al -9213034519 o a través de nuestros medios digitales.
+          <br /> nosotros al 9213034519 o a través de nuestros medios digitales.
         </span>
       </section>
       <section className="derechos">
